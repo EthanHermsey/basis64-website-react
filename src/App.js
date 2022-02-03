@@ -4,7 +4,7 @@ import { Panel } from './components/Panel';
 
 class App extends Component {
 	render(){
-		const itemPanels = this.props.items.map( ( item, index )=>{
+	    const itemPanels = this.props.items.map( ( item, index )=>{
             return (
                 <Panel {...item} key={index} />
             )
