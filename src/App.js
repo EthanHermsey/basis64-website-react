@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel } from './components/Panel';
-import gitImg from './assets/git.png';
-import mailImg from './assets/mail.png';
 
 class App extends Component {
 	render(){
