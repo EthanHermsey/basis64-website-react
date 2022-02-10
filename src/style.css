@@ -4,9 +4,17 @@
     src: url('./assets/eunomia.ttf');
 }
 
-/* classes */
+           /* oooo             .o8                 oooo  
+           `888            "888                 `888  
+ .oooooooo  888   .ooooo.   888oooo.   .oooo.    888  
+888' `88b   888  d88' `88b  d88' `88b `P  )88b   888  
+888   888   888  888   888  888   888  .oP"888   888  
+`88bod8P'   888  888   888  888   888 d8(  888   888  
+`8oooooo.  o888o `Y8bod8P'  `Y8bod8P' `Y888""8o o888o 
+d"     YD                                             
+"Y88888P'                                             */
 :root {
-    --main-bg-color: #3c3c3c;
+    --main-bg-color: #080808;
     --button-bg-color: #339989;
     --button-sec-bg-color: #237a6d;
 }
@@ -33,16 +41,6 @@
     background: var(--button-sec-bg-color);
 }
 
-.blip:hover{
-    animation: blipAnim 200ms linear;
-}
-@keyframes blipAnim {
-    0%{ transform: scale( 1 ) }
-    25%{ transform: scale( 0.995 ) }
-    55%{ transform: scale( 1.01 ) }
-    100%{ transform: scale( 1 ) }
-}
-
 @keyframes opacityAnim{
     from { opacity: 0 }
     to { opacity: 1 }
@@ -53,13 +51,33 @@
     font-weight: 300;
     font-size: 2.4em;
 }
-
 .container-wide {
     width: 90%;
     padding: 0;
     margin:0;
     margin-left: 5%;
 }
+.container-small {
+    width: 50%;
+    padding: 0;
+    margin:0;
+    margin-left: 25%;
+}
+
+.place-left, .place-right{
+    width: 65% !important;
+    position: absolute !important;
+    bottom: 0 !important;
+}
+.place-left{
+    right: 0;
+    padding-left: 5%;    
+}
+
+.place-right{
+    left: 0%;
+    padding-right: 5%;    
+}
 
 
 
@@ -67,18 +85,31 @@
 
 
 
-/* App */
+      /* .o.                             
+     .888.                            
+    .8"888.     oo.ooooo.  oo.ooooo.  
+   .8' `888.     888' `88b  888' `88b 
+  .88ooo8888.    888   888  888   888 
+ .8'     `888.   888   888  888   888 
+o88o     o8888o  888bod8P'  888bod8P' 
+                 888        888       
+                o888o      o888o       */
 html, body, #root, .App{
     margin: 0;
     height: 100vh;
     width: 100vw;
     font-family: 'News Cycle';
+    overflow-x: hidden;
 }
 
 .App{
     overflow-y: scroll;
 }
 
+.App > h1{
+    font-size: 5.5em;
+    font-weight: 600;    
+}
 footer{
     position: fixed;
     bottom: 2%;
@@ -110,71 +141,243 @@ footer #git::before{
 }
 
 
-/* Panel */
-.btn-grid{
+
+
+
+
+/*
+  ooooooooo.                                   oooo  
+  `888   `Y88.                                 `888  
+   888   .d88'  .oooo.   ooo. .oo.    .ooooo.   888  
+   888ooo88P'  `P  )88b  `888P"Y88b  d88' `88b  888  
+   888          .oP"888   888   888  888ooo888  888  
+   888         d8(  888   888   888  888    .o  888  
+  o888o        `Y888""8o o888o o888o `Y8bod8P' o888o  */
+.card{
+    border-style: none;
+}
+
+.img-thumbnail{
+    border-style: none !important;
+    transition: transform 500ms linear;
+}
+
+.img-thumbnail.blip{
+    transform: scale( 1.02 );
+}
+
+
+
+
+
+/*
+ooooo              .o88o.           
+`888'              888 `"           
+ 888  ooo. .oo.   o888oo   .ooooo.  
+ 888  `888P"Y88b   888    d88' `88b 
+ 888   888   888   888    888   888 
+ 888   888   888   888    888   888 
+o888o o888o o888o o888o   `Y8bod8P'  */
+
+/* main box */
+#info-box{
+    width: 200% !important;
+}
+
+#info-box::after{
     position: absolute;
-    bottom: 4%;
-    width: 96%;
+    width: 15%;
+    top: 85%;
+    left: 36%;
+    content: '';
+    border-width: 2px;
+    border-style: none none solid none;
+    border-color: white;
+    transition: all 0.1s ease-in-out !important; 
+    transition-delay: 0.15s !important;
+}
+#info-box.shown::after{
+    width: 0%;
+    left: 51%;
+    transition-delay: 0.15s !important;
+}
+#info-box.place-left::after{
+    left: 49%;
+}
+
+
+#info-box.shown::before{
+    position: absolute;
+    content: '';
+    top: calc( 85% - 12px + 1px );
+    left: calc( 35% - 12px - 2px );
+    width: 24px;
+    height: 24px;
+    border: 2px solid white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;    
+}
+#info-box:not(.shown)::before{
+    position: absolute;
+    content: '';
+    top: calc( 85% - 12px + 1px );
+    left: calc( 35% - 12px - 2px );
+    width: 24px;
+    height: 24px;
+    border: 2px solid white;
+    border-radius: 50%;        
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+    transition-delay: 0.3s !important;
+}
+#info-box.place-left::before{
+    left: calc( 65% - 0.75vw + 3px ) !important;
+}
+
+
+/* title */
+#info-box > h1{
+    height: 20% !important;
+}
+#info-box > .sizer{
+    height: 65% !important;
+    transition: all 0.15s ease-out !important;
+    transition-delay: 0s !important;
+}
+#info-box.shown > .sizer{
+    height: 0% !important;
+    transition-delay: 0.3s !important;
+}
+#info-box.place-right > h1{
+    text-align: right !important;
+}
+
+
+/* text / btn card */
+.info-card{
+    width: 48%;
+    margin-left: 52%;
+    height: 0%;
+    border: 1px solid white;
+    overflow-y: hidden;
+    transition: all 0.15s ease-out !important;
+    transition-delay: 0s !important;
+    display: grid;
+    grid-template-rows: 85% 15%;
+}
+#info-box.place-left > .info-card{
+    margin-left: 0%;
+}
+#info-box.shown .info-card{
+    height: 79.5%;
+    transition-delay: 0.3s !important;
+}
+.info-card > p{
+    overflow-y: scroll;
+}
+#info-box.shown .info-card > p{
+    margin-top: 2.5%;
+    height: 88%;
+    animation: scrollAnim 0.5s linear;
+}
+@keyframes scrollAnim {
+    0%{ overflow-y: scroll; }
+    1%{ overflow-y: hidden; }
+    99%{ overflow-y: hidden; }
+    100%{ overflow-y: scroll; }
+}
+
+/* buttons */
+.btn-grid{
     display: grid;
     grid-template-columns: 49% 49%;
     column-gap: 2%;
 }
-.btn-cust{
+.btn-cust, .btn-cust-fw{
     margin: 0;
     padding: 0;
     width:100%;
+    height: 80%;
     text-decoration: none;
-    transition: transform 10ms linear; 
+    transition: transform 0.1s linear;
+}
+.btn-cust-fw{
+    grid-column: 1 / span 2;
 }
 .btn-cust:hover{
     background-color: var(--button-sec-bg-color);
 }
 .btn-cust:active{
-    transform: scale( 0.9 );
-    transition: transform 0.1s linear;
-}
-
-.card{
-    border-style: outset;
-    border-width: 2px;
-    border-color: rgb(150, 150, 150);  
-    box-shadow: 2px 2px 2px 0 black;
-    border-radius: 0;
-}
-
-.img-thumbnail{
-    border-style: none !important;
+    transform: scale( 0.9 );    
 }
 
 
-.info-card{
-    transition: all 0.2s cubic-bezier(.93,.1,.42,.91);
-    left: calc( 50% );
-    margin: 0;
-    transform: translateX( -50% );
-}
-.info-card .card-text{
-    overflow-y: scroll;
-    height: 80%;
-}
-.info-card *{
-    opacity: 0;
+
+
+
+
+
+                               /* .o8   o8o            
+                                 "888   `"'            
+ooo. .oo.  .oo.    .ooooo.   .oooo888  oooo   .oooo.   
+`888P"Y88bP"Y88b  d88' `88b d88' `888  `888  `P  )88b  
+ 888   888   888  888ooo888 888   888   888   .oP"888  
+ 888   888   888  888    .o 888   888   888  d8(  888  
+o888o o888o o888o `Y8bod8P' `Y8bod88P" o888o `Y888""8o  */
+@media screen and (max-width: 992px) {
+    .container-small {
+        width: 70%;
+        padding: 0;
+        margin:0;
+        margin-left: 5%;
+    }
+
+    .place-left{
+        left: 0%;
+        padding-left: 0;
+        padding-right: 5%;
+    }
+    #info-box.place-left::before{
+        left: calc( 35% - 12px - 2px ) !important;
+    }
+    #info-box.place-left::after{
+        left: 36%;
+    }
+    #info-box.place-left > .info-card{
+        margin-left: 52%;
+    }
+    #info-box.place-left > h1{
+        text-align: right !important;
+    }
+    
 }
 
-.card:not(:hover) .info-card{
-    position: absolute;    
-    height: 48px !important;
-    width: 48px !important;
-    border-radius: 50%;
-    overflow: hidden;
-    transform: translateY( -10% ) translateX( -50% );
-}
-.card:not(:hover) .info-card::before{
-    content: '• • •';
-    align-self: center;    
-    line-height: 1.95em;
-}
-.card:hover .info-card *{
-    opacity: 1;
-    animation: opacityAnim 0.75s linear;
+@media screen and (max-width: 768px) {
+    .container-small {
+        width: 90%;
+        padding: 0;
+        margin:0;
+        margin-left: 5%;
+    }
+    .App > h1{
+        font-size: 4.5em;
+        font-weight: 600;    
+        margin-bottom: 0%;
+    }
+    .btn-grid{
+        width: 98%;
+        margin: 1%;
+    }
+    .btn-cust{
+        padding: 0 !important;
+        padding-bottom: 10% !important;
+    }
+    .btn-cust-fw{
+        padding-bottom: 5% !important;
+    }
+    .border-cust{
+        border: 1px ridge gray;
+        border-radius: 5px;
+    }
 }

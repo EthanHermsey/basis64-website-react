@@ -1,21 +1,20 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel } from './components/Panel';
-import gitImg from './assets/git.png';
-import mailImg from './assets/mail.png';
 
 class App extends Component {
 	render(){
 		const itemPanels = this.props.items.map( ( item, index )=>{
             return (
-                <Panel {...item} key={index} />
+                <Panel {...item} key={index} toLeft={!(index%2===0)} />
             )
         })
 
 		return (		 
 			<div className="App bg-main">
-				<div className="container-wide mt-5">
-                    <div className="row gy-4">
+                <h1 className=" text-white eunomia text-center mt-4 mb-0">BASIS64</h1>
+				<div className="container-small mt-0">
+                    <div className="row gy-5 mt-2">
 					    { itemPanels }
                     </div>
 				</div>
