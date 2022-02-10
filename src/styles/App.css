@@ -1,0 +1,45 @@
+html, body, #root, .App{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'News Cycle';
+    overflow-x: hidden;
+}
+
+.App{
+    overflow-y: scroll;
+}
+
+.App > h1{
+    font-size: 5.5em;
+    font-weight: 600;    
+}
+footer{
+    position: fixed;
+    bottom: 2%;
+    left: 0;
+    width: 150px;
+}
+footer a div:hover{
+    background-color: var(--button-sec-bg-color);
+}
+footer #email{
+    margin-bottom: 4px !important;    
+}
+footer #email::before, footer #git::before{
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    left: 3px;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+footer #email::before{
+    background-image: url('../assets/mail.png');
+}
+footer #git::before{
+    background-image: url('../assets/git.png');
+}

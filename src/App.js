@@ -1,16 +1,52 @@
-import { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Panel } from './components/Panel';
+import './styles/App.css';
 
-class App extends Component {
-	render(){
-	    const itemPanels = this.props.items.map( ( item, index )=>{
-            return (
-                <Panel {...item} key={index} toLeft={!(index%2===0)} />
-            )
+//gets props from store
+//loads a panel for each item
+//capture scroll event, for auto animation. Pass to panel in props
+//renders it to screen
+class App extends React.Component {
+
+    constructor( props ){
+        
+        super( props );
+        this.appDiv = React.createRef();
+        this.state = {
+            scrollUpdate: true
+        };
+        
+    }
+
+    componentDidMount(){
+        
+        //scroll event, to check if animatedInfo needs to show when in view
+        this.appDiv.current.addEventListener('scroll', ()=>{
+
+            this.setState( { scrollUpdate: !this.state.scrollUpdate } );
+
         })
+
+    }
+
+    getPanels = () => {
+
+        return this.props.items.map( ( item, index )=>{
+
+            return (
+                <Panel { ...{ ...item, toLeft: ( index%2===1 ), scrollUpdate: this.state.scrollUpdate } } key={index} />
+            )
+
+        })
+    }
+
+	render(){
+
+	    const itemPanels = this.getPanels();
+
 		return (		 
-			<div className="App bg-main">
+			<div className="App bg-main" ref={this.appDiv}>
                 <h1 className=" text-white eunomia text-center mt-4 mb-0">BASIS64</h1>
 				<div className="container-small mt-0">
                     <div className="row gy-5 mt-2">
@@ -26,14 +62,16 @@ class App extends Component {
                     </a>
                 </footer>
 			</div>
-		);		
+		);
+
 	}
+
 };
 
 const mapStateToProps = ( state )=>{
 	return{
-		items: state.items
+        items: state.items
 	};
 }
 
-export default connect( mapStateToProps )(App);
+export default connect( mapStateToProps )( App );

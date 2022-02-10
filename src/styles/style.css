@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/css2?family=News+Cycle&display=swap);  
+@font-face {
+    font-family: 'Eunomia';
+    src: url('../assets/eunomia.ttf');
+}
+
+           /* oooo             .o8                 oooo  
+           `888            "888                 `888  
+ .oooooooo  888   .ooooo.   888oooo.   .oooo.    888  
+888' `88b   888  d88' `88b  d88' `88b `P  )88b   888  
+888   888   888  888   888  888   888  .oP"888   888  
+`88bod8P'   888  888   888  888   888 d8(  888   888  
+`8oooooo.  o888o `Y8bod8P'  `Y8bod8P' `Y888""8o o888o 
+d"     YD                                             
+"Y88888P'                                             */
+:root {
+    --main-bg-color: #080808;
+    --button-bg-color: #339989;
+    --button-sec-bg-color: #237a6d;
+}
+
+.bg-main{
+    background-color: var( --main-bg-color );
+}
+.bg-button{
+    background-color: var( --button-bg-color );
+}
+
+*{
+    text-decoration: none !important;
+}
+
+*::-webkit-scrollbar{
+    width:10px;
+    background: var(--main-bg-color);
+}
+*::-webkit-scrollbar-thumb{
+    background: var(--button-bg-color);
+}
+*::-webkit-scrollbar-thumb:hover{
+    background: var(--button-sec-bg-color);
+}
+
+@keyframes opacityAnim{
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+.eunomia{
+    font-family: 'Eunomia', sans-serif !important;
+    font-weight: 300;
+    font-size: 2.4em;
+}
+.container-wide {
+    width: 90%;
+    padding: 0;
+    margin:0;
+    margin-left: 5%;
+}
+.container-small {
+    width: 50%;
+    padding: 0;
+    margin:0;
+    margin-left: 25%;
+}
+
+.place-left, .place-right{
+    width: 65% !important;
+    position: absolute !important;
+    bottom: 0 !important;
+}
+.place-left{
+    right: 0;
+    padding-left: 5%;    
+}
+
+.place-right{
+    left: 0%;
+    padding-right: 5%;    
+}
+
+
+
+
+
+                               /* .o8   o8o            
+                                 "888   `"'            
+ooo. .oo.  .oo.    .ooooo.   .oooo888  oooo   .oooo.   
+`888P"Y88bP"Y88b  d88' `88b d88' `888  `888  `P  )88b  
+ 888   888   888  888ooo888 888   888   888   .oP"888  
+ 888   888   888  888    .o 888   888   888  d8(  888  
+o888o o888o o888o `Y8bod8P' `Y8bod88P" o888o `Y888""8o  */
+@media screen and (max-width: 992px) {
+    .container-small {
+        width: 70%;
+        padding: 0;
+        margin:0;
+        margin-left: 5%;
+    }
+
+    .place-left{
+        left: 0%;
+        padding-left: 0;
+        padding-right: 5%;
+    }
+    #info-box.place-left::before{
+        left: calc( 35% - 12px - 2px ) !important;
+    }
+    #info-box.place-left::after{
+        left: 36%;
+    }
+    #info-box.place-left > .info-card{
+        margin-left: 52%;
+    }
+    #info-box.place-left > h1{
+        text-align: right !important;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .container-small {
+        width: 90%;
+        padding: 0;
+        margin:0;
+        margin-left: 5%;
+    }
+    .App > h1{
+        font-size: 4.5em;
+        font-weight: 600;    
+        margin-bottom: 0%;
+    }
+    .btn-grid{
+        width: 98%;
+        margin: 1%;
+    }
+    .btn-cust{
+        padding: 0 !important;
+        padding-bottom: 10% !important;
+    }
+    .btn-cust-fw{
+        padding-bottom: 5% !important;
+    }
+    .border-cust{
+        border: 1px ridge gray;
+        border-radius: 5px;
+    }
+}
