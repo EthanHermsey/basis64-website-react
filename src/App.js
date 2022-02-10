@@ -4,12 +4,11 @@ import { Panel } from './components/Panel';
 
 class App extends Component {
 	render(){
-		const itemPanels = this.props.items.map( ( item, index )=>{
+	    const itemPanels = this.props.items.map( ( item, index )=>{
             return (
                 <Panel {...item} key={index} toLeft={!(index%2===0)} />
             )
         })
-
 		return (		 
 			<div className="App bg-main">
                 <h1 className=" text-white eunomia text-center mt-4 mb-0">BASIS64</h1>
@@ -27,7 +26,7 @@ class App extends Component {
                     </a>
                 </footer>
 			</div>
-		);
+		);		
 	}
 };
 
