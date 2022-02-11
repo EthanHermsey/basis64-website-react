@@ -30,7 +30,7 @@ footer{
     #email{
         margin-bottom: 4px !important;    
     }
-    #email::before, footer #git::before{
+    #email::before, #git::before{
         content: ' ';
         position: absolute;
         width: 20px;
