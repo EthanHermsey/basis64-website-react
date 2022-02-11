@@ -5,8 +5,8 @@
 .img-thumbnail{
     border-style: none !important;
     transition: transform 500ms linear;
-}
 
-.img-thumbnail.blip{
-    transform: scale( 1.02 );
+    &.blip{
+        transform: scale( 1.02 );
+    }
 }

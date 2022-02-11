@@ -1,6 +1,6 @@
 import { MobileCard } from './MobileCard';
 import { NormalCard } from './NormalCard';
-import '../styles/Panel.css';
+import '../styles/Panel.scss';
 
 //returns a panel for an item
 //props pass through to Cards

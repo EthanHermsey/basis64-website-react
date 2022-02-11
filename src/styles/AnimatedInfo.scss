@@ -1,0 +1,114 @@
+
+/* main box */
+#info-box{
+    width: 200% !important;
+
+    // horizontal retracting stripe
+    &::after{
+        position: absolute;
+        width: 15%;
+        top: 85%;
+        left: 36%;
+        content: '';
+        border-width: 2px;
+        border-style: none none solid none;
+        border-color: white;
+        transition: all 0.1s ease-in !important; 
+        transition-delay: 0.15s !important;
+    }
+    &.shown::after{
+        width: 0%;
+        left: 51%;
+        transition-delay: 0.15s !important;
+    }
+    &.place-left::after{
+        left: 49%;
+    }
+
+    //circle
+    &.shown::before{
+        position: absolute;
+        content: '';
+        top: calc( 85% - 12px + 1px );
+        left: calc( 35% - 12px - 2px );
+        width: 24px;
+        height: 24px;
+        border: 2px solid white;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.15s ease-in;    
+    }
+    &:not(.shown)::before{
+        position: absolute;
+        content: '';
+        top: calc( 85% - 12px + 1px );
+        left: calc( 35% - 12px - 2px );
+        width: 24px;
+        height: 24px;
+        border: 2px solid white;
+        border-radius: 50%;        
+        opacity: 1;
+        transition: opacity 0.15s ease-in;
+        transition-delay: 0.3s !important;
+    }
+    &.place-left::before{
+        left: calc( 65% - 0.75vw + 3px ) !important;
+    }
+
+    //title
+    >h1{
+        height: 20% !important;
+    }
+    >.sizer{
+        height: 65% !important;
+        transition: all 0.15s ease-out !important;
+        transition-delay: 0s !important;
+    }
+    &.shown > .sizer{
+        height: 0% !important;
+        transition-delay: 0.3s !important;
+    }
+    &.place-right > h1{
+        text-align: right !important;
+    }
+
+
+    //infocard
+    &.place-left > .info-card{
+        margin-left: 0%;
+    }
+    &.shown .info-card{
+        height: 79.5%;
+        transition-delay: 0.3s !important;
+    }
+    &.shown .info-card > p{
+        margin-top: 2.5%;
+        height: 88%;
+        animation: scrollAnim 0.5s linear;
+    }
+}
+
+
+
+/* text / btn card */
+.info-card{
+    width: 48%;
+    margin-left: 52%;
+    height: 0%;
+    border: 1px solid white;
+    overflow-y: hidden;
+    transition: all 0.15s ease-out !important;
+    transition-delay: 0s !important;
+    display: grid;
+    grid-template-rows: 85% 15%;
+
+    >p{
+        overflow-y: scroll;
+    }    
+}
+@keyframes scrollAnim {
+    0%{ overflow-y: scroll; }
+    1%{ overflow-y: hidden; }
+    99%{ overflow-y: hidden; }
+    100%{ overflow-y: scroll; }
+}

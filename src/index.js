@@ -5,7 +5,7 @@ import App from './App';
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles/style.css';
+import './styles/style.scss';
 
 import { rootReducer } from './reducers/rootReducer';
 import { createStore } from 'redux';

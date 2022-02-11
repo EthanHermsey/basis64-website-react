@@ -12,18 +12,21 @@
 `88bod8P'   888  888   888  888   888 d8(  888   888  
 `8oooooo.  o888o `Y8bod8P'  `Y8bod8P' `Y888""8o o888o 
 d"     YD                                             
-"Y88888P'                                             */
-:root {
-    --main-bg-color: #080808;
-    --button-bg-color: #339989;
-    --button-sec-bg-color: #237a6d;
-}
+"Y88888P'                                         */
 
+$back-bg-color: linear-gradient( to right, #101010 0%, #161616 15% 85%, #101010 100% );
+$main-bg-color: #161616;
+$button-bg-color: #339989;
+$button-sec-bg-color: #237a6d;
+
+.bg-back{
+    background: $back-bg-color;
+}
 .bg-main{
-    background-color: var( --main-bg-color );
+    background-color: $main-bg-color;
 }
 .bg-button{
-    background-color: var( --button-bg-color );
+    background-color: $button-bg-color;
 }
 
 *{
@@ -32,13 +35,13 @@ d"     YD
 
 *::-webkit-scrollbar{
     width:10px;
-    background: var(--main-bg-color);
+    background: $main-bg-color;
 }
 *::-webkit-scrollbar-thumb{
-    background: var(--button-bg-color);
+    background: $button-bg-color;
 }
 *::-webkit-scrollbar-thumb:hover{
-    background: var(--button-sec-bg-color);
+    background: $button-sec-bg-color;
 }
 
 @keyframes opacityAnim{
@@ -73,7 +76,6 @@ d"     YD
     right: 0;
     padding-left: 5%;    
 }
-
 .place-right{
     left: 0%;
     padding-right: 5%;    

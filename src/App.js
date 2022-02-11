@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Panel } from './components/Panel';
-import './styles/App.css';
+import './styles/App.scss';
 
 //gets props from store
 //loads a panel for each item
@@ -46,7 +46,7 @@ class App extends React.Component {
 	    const itemPanels = this.getPanels();
 
 		return (		 
-			<div className="App bg-main" ref={this.appDiv}>
+			<div className="App bg-back" ref={this.appDiv}>
                 <h1 className=" text-white eunomia text-center mt-4 mb-0">BASIS64</h1>
 				<div className="container-small mt-0">
                     <div className="row gy-5 mt-2">

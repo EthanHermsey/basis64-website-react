@@ -1,5 +1,5 @@
 
-import '../styles/ButtonGrid.css';
+import '../styles/ButtonGrid.scss';
 
 //Returns a grid with a link and optional video
 const ButtonGrid = ( props )=>{

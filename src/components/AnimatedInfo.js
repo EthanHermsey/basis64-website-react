@@ -1,6 +1,6 @@
 import React from "react";
 import { ButtonGrid } from "./ButtonGrid";
-import '../styles/AnimatedInfo.css';
+import '../styles/AnimatedInfo.scss';
 
 //returns a information panel
 //acepts title, description, video, link
