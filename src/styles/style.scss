@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=News+Cycle&display=swap);  
+@import './variables.scss';
+@import url(https://fonts.googleapis.com/css2?family=News+Cycle&display=swap);
 @font-face {
     font-family: 'Eunomia';
     src: url('../assets/eunomia.ttf');
@@ -14,19 +15,12 @@
 d"     YD                                             
 "Y88888P'                                         */
 
-$back-bg-color: linear-gradient( to right, #101010 0%, #161616 15% 85%, #101010 100% );
-$main-bg-color: #161616;
-$button-bg-color: #339989;
-$button-sec-bg-color: #237a6d;
-
-.bg-back{
-    background: $back-bg-color;
-}
-.bg-main{
-    background-color: $main-bg-color;
-}
-.bg-button{
-    background-color: $button-bg-color;
+html, body, #root{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'News Cycle';
+    overflow-x: hidden;
 }
 
 *{
@@ -54,6 +48,17 @@ $button-sec-bg-color: #237a6d;
     font-weight: 300;
     font-size: 2.4em;
 }
+
+.bg-back{
+    background: $back-bg-color;
+}
+.bg-main{
+    background-color: $main-bg-color;
+}
+.bg-button{
+    background-color: $button-bg-color;
+}
+
 .container-wide {
     width: 90%;
     padding: 0;
