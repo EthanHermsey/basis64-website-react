@@ -1,70 +1,51 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ButtonGrid } from "./ButtonGrid";
+import { useElementInView } from "../hooks/useElementInView";
+
 import '../styles/AnimatedInfo.scss';
+import { useEffect } from "react";
 
-//returns a information panel
-//acepts title, description, video, link
-class Info extends React.Component{
+//returns an animated information panel
+export const Info = ( props ) => {
 
-    constructor( props ){
-        
-        super(props);
-        this.infoBox = React.createRef();
-        this.state = {
-            show: false
-        };
+	const [ show, setShow, viewElement ] = useElementInView( props.scrollUpdate );
 
-    }
+	//also add animation class to panelImage passed in props..
+	useEffect( ()=>{
 
-    componentDidUpdate( prevProps ){
+		props.panelImg.current.classList.toggle( 'blip', show );
 
-        if ( prevProps.scrollUpdate !== this.props.scrollUpdate ){
+	}, [ show ] );
 
-            if ( this.infoBox.current && window.innerWidth < 992){
-                
-                const rect = this.infoBox.current.getBoundingClientRect();
-                if ( rect.top < window.innerHeight && rect.bottom < window.innerHeight && rect.bottom > 0){
+	//adaptive class for infobox
+	const boxClass = "text-white h-100 " + ( ( props.toLeft ) ? 'place-right' : 'place-left' ) + ( ( show ) ? ' shown' : '' );
 
-                    this.toggleShow( true );
+	return (
+		<div id="info-box" ref={viewElement} className={boxClass} onMouseEnter={()=>{
 
-                } else {
+			setShow( true );
 
-                    this.toggleShow( false );
+		}} onMouseLeave={()=>{
 
-                }
-                
-            }
+			setShow( false );
 
-        }
+		}}>
+			<div className="sizer"></div>
+			<h1 className='w-100 text-white eunomia m-0 py-1'>{props.title}</h1>
+			<div className="info-card bg-main">
+				<p className="card-text container-wide text-left">{props.description}</p>
+				<ButtonGrid {...props} />
+			</div>
+		</div>
+	);
 
-    }
+};
 
-    toggleShow = ( v )=>{
-
-        this.props.panelImg.current.classList.toggle( 'blip', v );
-        this.setState( {...this.state, show: v } );
-
-    }
-    
-    render(){
-
-        //adaptive class for infobox
-        const boxClass = "text-white h-100 " + ( ( this.props.toLeft ) ? 'place-right' : 'place-left') + ((this.state.show) ? ' shown' : '');
-
-        return (
-            <div id="info-box" ref={this.infoBox} className={boxClass} onMouseEnter={()=>{this.toggleShow(true)}} onMouseLeave={()=>{this.toggleShow(false)}}>
-                <div className="sizer"></div>
-                <h1 className='w-100 text-white eunomia m-0 py-1'>{this.props.title}</h1>
-                <div className="info-card bg-main">
-                    <p className="card-text container-wide text-left">{this.props.description}</p>
-                    <ButtonGrid {...this.props} />
-                </div>
-            </div>
-        )
-
-    }
-
-}
-
-
-export { Info };
+Info.propTypes = {
+	scrollUpdate: PropTypes.bool,
+	toLeft: PropTypes.bool,
+	panelImg: PropTypes.any,
+	title: PropTypes.string,
+	description: PropTypes.string,
+};

@@ -1,25 +1,27 @@
 
 const initState = {
-    items: []
-}
+	items: []
+};
 
 const rootReducer = ( state = initState, action ) => {
-    switch ( action.type ){
 
-        case 'LOAD_DATA':
-            
-            const flatData = action.data.map( item =>{
-                return item.children;
-            }).flat(1);
+	switch ( action.type ) {
 
-            return {
-                items: flatData
-            }
+		case 'LOAD_DATA':
 
-        default:
-            return state;
-            
-    }
-}
+			return {
+				items: action.data.map( item =>{
+
+					return item.children;
+
+				} ).flat( 1 )
+			};
+
+		default:
+			return state;
+
+	}
+
+};
 
 export { rootReducer };
