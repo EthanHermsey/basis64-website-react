@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/ButtonGrid.scss';
 
-//Returns a grid with a link and optional video
+//Returns a grid with a link and optional video button
 const ButtonGrid = ( props )=>{
 
 	return ( props.video ) ? (

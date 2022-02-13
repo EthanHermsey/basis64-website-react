@@ -6,7 +6,7 @@ import { useElementInView } from "../hooks/useElementInView";
 import '../styles/AnimatedInfo.scss';
 import { useEffect } from "react";
 
-//returns an animated information panel
+//returns an animated information panel, used in normalCard
 export const Info = ( props ) => {
 
 	const [ show, setShow, viewElement ] = useElementInView( props.scrollUpdate );
