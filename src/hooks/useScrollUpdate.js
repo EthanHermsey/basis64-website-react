@@ -1,9 +1,8 @@
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 //hook that return a reactive value that changes when the page is scrolled
-export const useScrollUpdate = ()=>{
+export const useScrollUpdate = ( eltRef )=>{
 
-	const eltRef = useRef();
 	const [ scrollUpdate, setScrollUpdate ] = useState( false );
 
 	useLayoutEffect( ()=>{
@@ -16,6 +15,6 @@ export const useScrollUpdate = ()=>{
 
 	}, [ eltRef ] );
 
-	return [ scrollUpdate, eltRef ];
+	return [ scrollUpdate ];
 
 };

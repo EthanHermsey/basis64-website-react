@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { ButtonGrid } from "./ButtonGrid";
 import { useElementInView } from "../hooks/useElementInView";
+import { ScrollContext } from "../providers/ScrollUpdateProvider";
 
 import '../styles/AnimatedInfo.scss';
-import { useEffect } from "react";
+
 
 //returns an animated information panel, used in normalCard
 export const Info = ( props ) => {
 
-	const [ show, setShow, viewElement ] = useElementInView( props.scrollUpdate );
+	const scrollContext = useContext( ScrollContext );
+	const [ show, setShow, viewElement ] = useElementInView( scrollContext );
 
 	//also add animation class to panelImage passed in props..
 	useEffect( ()=>{
 
-		props.panelImg.current.classList.toggle( 'blip', show );
+		props.panelImg.current.classList.toggle( 'grow', show );
 
 	}, [ show ] );
 
@@ -43,7 +45,6 @@ export const Info = ( props ) => {
 };
 
 Info.propTypes = {
-	scrollUpdate: PropTypes.bool,
 	toLeft: PropTypes.bool,
 	panelImg: PropTypes.any,
 	title: PropTypes.string,

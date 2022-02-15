@@ -1,12 +1,23 @@
 .card{
     border-style: none;
+
+    &.blip{
+        animation: blipAnim 0.8s ease-out;
+    }
+    @keyframes blipAnim {
+        0%{ transform: scale( 1 ) }
+        15%{ transform: scale( 0.99 ) }
+        35%{ transform: scale( 1.05 ) }
+        55%{ transform: scale( 1.001 ) }
+        100%{ transform: scale( 1 ) }
+    }
 }
 
 .img-thumbnail{
     border-style: none !important;
     transition: transform 500ms linear;
 
-    &.blip{
+    &.grow{
         transform: scale( 1.02 );
     }
 }

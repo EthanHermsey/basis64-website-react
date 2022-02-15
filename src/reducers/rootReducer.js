@@ -9,13 +9,7 @@ const rootReducer = ( state = initState, action ) => {
 
 		case 'LOAD_DATA':
 
-			return {
-				items: action.data.map( item =>{
-
-					return item.children;
-
-				} ).flat( 1 )
-			};
+			return { items: action.data };
 
 		default:
 			return state;

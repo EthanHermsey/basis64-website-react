@@ -7,7 +7,7 @@ import '../styles/Panel.scss';
 //props pass through to Cards
 const Panel = ( props ) => {
 
-	const getCard = ( window.innerWidth < 768 ) ? (
+	const card = ( window.innerWidth < 768 ) ? (
 		<MobileCard {...props}/>
 	) : (
 		<NormalCard {...props}/>
@@ -15,7 +15,7 @@ const Panel = ( props ) => {
 
 	return (
 		<div className="col-lg-6 col-md-8 col-sm-12 px-2 user-select-none mb-2">
-			{ getCard }
+			{ card }
 		</div>
 	);
 

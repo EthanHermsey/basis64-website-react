@@ -8,21 +8,20 @@ import { useGetItem } from '../hooks/useGetItem';
 const NormalCard = ( props )=>{
 
 	const panelImage = useRef();
-	const item = useGetItem( props.index );
+	const item = useGetItem( props.dataKey );
+	const toLeft = ( props.dataKey % 2 === 1 );
 
 	return (
 		<div className="card bg-main">
-			<img ref={panelImage} className="img-fluid img-thumbnail bg-main" src={`${process.env.PUBLIC_URL}/resources/${item.img}`} alt=""/>
-			<Info {...item} panelImg={panelImage} toLeft={props.toLeft} scrollUpdate={props.scrollUpdate}/>
+			<img ref={ panelImage } className="img-fluid img-thumbnail bg-main" src={`${process.env.PUBLIC_URL}/resources/${item.img}`} alt=""/>
+			<Info {...item} panelImg={ panelImage } toLeft={ toLeft }/>
 		</div>
 	);
 
 };
 
 NormalCard.propTypes = {
-	index: PropTypes.number,
-	toLeft: PropTypes.bool,
-	scrollUpdate: PropTypes.bool
+	dataKey: PropTypes.number
 };
 
 export { NormalCard };
